@@ -11,7 +11,7 @@ function Card(props) {
 	const src = cardData.logo;
 	return (
 		<div
-			className='shadow px-3 py-2 flex rounded-2xl mr-3'
+			className='shadow-lg px-3 py-2 flex rounded-2xl mr-3'
 			onClick={handleStep}>
 			<h1>{props.cardData.title}</h1>
 			{/* {console.log(props.cardData.title)} */}
@@ -20,6 +20,8 @@ function Card(props) {
 					className='p-3 '
 					src={src}
 					alt='Logo'
+					height={60}
+					width={60}
 				/>
 			</div>
 		</div>

@@ -24,7 +24,7 @@ function List() {
 						<li
 							key={service.id}
 							className='hover:bg-white rounded-3xl px-5 py-2 mx-8' >
-							<a href='#'>{service.title}</a>
+							<a href={service.id}>{service.title}</a>
 						</li>
 					))}
 				</ul>
