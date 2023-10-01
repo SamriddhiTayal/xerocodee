@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import '../index.css';
+ 
 import ToggleButton from './ToggleButton';
+import ActiveCard from './ActiveCard';
 const cardData = [
 	{
 		title: 'AWS',
@@ -12,6 +14,7 @@ const cardData = [
 		id: '0',
 		color: 'bg-[#FFF5E5]',
 		strokeColor: 'border-[#FFDFA2]',
+		stepNumber: '1',
 	},
 	{
 		title: 'GCP',
@@ -19,6 +22,7 @@ const cardData = [
 		id: '1',
 		color: 'bg-[#ECF3FE]',
 		strokeColor: 'border-[#4192FF]',
+		stepNumber: '1',
 	},
 	{
 		title: 'Github',
@@ -26,6 +30,7 @@ const cardData = [
 		id: '2',
 		color: 'bg-[#E9E9E9]',
 		strokeColor: 'border-[#C0C0C0]',
+		stepNumber: '2',
 	},
 	{
 		title: 'Gitlab',
@@ -33,6 +38,7 @@ const cardData = [
 		id: '3',
 		color: 'bg-[#FCECEA]',
 		strokeColor: 'border-[#F77556]',
+		stepNumber: '2',
 	},
 	{
 		title: 'Bitbucket',
@@ -40,6 +46,7 @@ const cardData = [
 		id: '4',
 		color: 'bg-[#E0ECFF]',
 		strokeColor: 'border-[#4192FF]',
+		stepNumber: '2',
 	},
 	{
 		title: 'MongoDB',
@@ -47,6 +54,7 @@ const cardData = [
 		id: '5',
 		color: 'bg-[#EDF5ED]',
 		strokeColor: 'bg-[#34A853]',
+		stepNumber: '3',
 	},
 	{
 		title: 'RedisDB',
@@ -54,6 +62,7 @@ const cardData = [
 		id: '6',
 		color: 'bg-[#FBEAE9]',
 		strokeColor: 'border-[#F77556]',
+		stepNumber: '3',
 	},
 	{
 		title: 'Postgresql',
@@ -61,6 +70,7 @@ const cardData = [
 		id: '7',
 		color: 'bg-[#EBF0F4]',
 		strokeColor: 'border-[#64BAFF]',
+		stepNumber: '3',
 	},
 ];
 
@@ -74,16 +84,13 @@ function Content() {
 		});
 	}, [progress]);
 
-	const [step1, setStep1] = useState(false);
-	const [step2, setStep2] = useState(false);
-	const [step3, setStep3] = useState(false);
 	const [activeTab, setActiveTab] = useState([]);
 	const handleClick = () => {
 		setProgress((progress) => progress + 100 / 3);
 	};
 
 	return (
-		<div className='bg-white rounded-3xl p-3 w-full mx-5 mb-5'>
+		<div className='bg-white rounded-3xl p-3 flex-1 mx-5 mb-5'>
 			<div className='flex justify-between shadow-lg m-4 p-2 rounded-2xl bg-gradient-to-t from-[#F6FAFF]'>
 				<div className='welcome-message'>
 					<h1 className='text-5xl p-3'>Hii Arya!!</h1>
@@ -109,12 +116,14 @@ function Content() {
 							<div className='flex'>
 								<Card
 									cardData={cardData[0]}
-									onclick={setActiveTab}
+									setActiveTab={setActiveTab}
+									handleClick={handleClick}
 								/>
 
 								<Card
 									cardData={cardData[1]}
-									onclick={setActiveTab}
+									setActiveTab={setActiveTab}
+									handleClick={handleClick}
 								/>
 							</div>
 						</div>
@@ -124,17 +133,20 @@ function Content() {
 							<div className='flex'>
 								<Card
 									cardData={cardData[2]}
-									onclick={setActiveTab}
+									setActiveTab={setActiveTab}
+									handleClick={handleClick}
 								/>
 
 								<Card
 									cardData={cardData[3]}
-									onclick={setActiveTab}
+									setActiveTab={setActiveTab}
+									handleClick={handleClick}
 								/>
 
 								<Card
 									cardData={cardData[4]}
-									onclick={setActiveTab}
+									setActiveTab={setActiveTab}
+									handleClick={handleClick}
 								/>
 							</div>
 						</div>
@@ -144,36 +156,43 @@ function Content() {
 							<div className='flex'>
 								<Card
 									cardData={cardData[5]}
-									onclick={setActiveTab}
+									setActiveTab={setActiveTab}
+									handleClick={handleClick}
 								/>
 
 								<Card
 									cardData={cardData[6]}
-									onclick={setActiveTab}
+									setActiveTab={setActiveTab}
+									handleClick={handleClick}
 								/>
 
 								<Card
 									cardData={cardData[7]}
-									onclick={setActiveTab}
+									setActiveTab={setActiveTab}
+									handleClick={handleClick}
 								/>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div className='shadow-lg rounded-lg m-4 p-2 flex flex-col items-center '>
+				<div className='shadow-lg rounded-lg my-2 mx-4 p-2 flex flex-col items-center w-60'>
 					<div className='progress-bar-heading flex flex-col items-center py-3'>
 						<p className='font-bold '>Your Progress</p>
 						<p className='text-[#818181]'>towards xerocodee</p>
 					</div>
 					<CircularProgressbar
-						className='w-32'
+						className='w-20 '
 						value={Math.ceil(progress)}
 						text={`${Math.ceil(progress)}%`}
 					/>
-					{step1 ? <div>Step 1 complete</div> : null}
+					{activeTab.map((tab, index) => {
+						return (
+							<div key={index}>
+								<ActiveCard tab={tab}/>
+							</div>
+						);
+					})}
 					{console.log(activeTab)}
-					{step2 ? <div>Step 2 complete</div> : null}
-					{step3 ? <div>Step 3 complete</div> : null}
 				</div>
 			</div>
 		</div>

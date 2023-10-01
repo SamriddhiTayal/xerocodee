@@ -1,4 +1,7 @@
+import { useState } from 'react';
+
 function List() {
+	const [clicked, setClicked] = useState();
 	const services = [
 		{
 			title: 'XeroCodee',
@@ -64,15 +67,21 @@ function List() {
 					{services.map((service) => (
 						<li
 							key={service.id}
-							className='hover:bg-white rounded-3xl px-3 py-2 mx-8 flex whitespace-nowrap space-x-4'>
+							className='hover:bg-white rounded-3xl px-3 py-2 my-2 ml-2 flex relative'
+							onMouseEnter={() => setClicked(service.id)}
+							onMouseLeave={() => setClicked(null)}>
 							<img
 								src={service.logo}
 								alt='logo'
 								height={20}
 								width={20}
-								className='pr-1'
+								className='pr-1 mr-2'
 							/>
-							<a href={service.id}>{service.title}</a>
+							<p>{service.title}</p>
+							{/* <a href={service.id}>{service.title}</a> */}
+							{clicked === service.id ? (
+								<div className='bg-white h-3 w-20 absolute top-1/2 -z-10 -right-14 -translate-y-1/2 '></div>
+							) : null}
 						</li>
 					))}
 				</ul>
