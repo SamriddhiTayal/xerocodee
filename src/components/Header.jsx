@@ -1,7 +1,7 @@
 function Header() {
 	return (
 		<div
-			className='inline-flex 
+			className='flex  
 '>
 			<img
 				className='mt-4 ml-6'
@@ -10,12 +10,12 @@ function Header() {
 				height={52}
 				width={180}
 			/>
-			<div className='flex justify-between'>
+			<div className='flex justify-between w-full pr-3'>
 				<div>
 					<form>
-						<div className='flex space-y-3'>
+						<div className='flex bg-white rounded-3xl pl-3 h-10 m-2'>
 							<input
-								className='bg-white rounded-3xl px-3 h-10 m-2'
+								className='bg-[#fff] h-10 rounded-3xl'
 								type='text'
 								placeholder='Search'
 							/>
@@ -29,8 +29,8 @@ function Header() {
 					</form>
 				</div>
 
-				<div className='inline-flex'>
-					<button className='flex bg-yellow-300 rounded-3xl p-1 m-2 h-10'>
+				<div className='flex'>
+					<button className='flex bg-yellow-300 rounded-3xl p-1 m-2 h-10 items-center'>
 						<img
 							className='bg-white rounded-3xl'
 							src='../../public/assets/upgradeLogo.svg'
@@ -38,7 +38,7 @@ function Header() {
 						/>
 						<p>Upgrade Plan</p>
 					</button>
-					<button className='bg-white rounded-xl h-10 w-10 p-1 m-2'>
+					<button className='bg-white rounded-xl h-10 w-10 p-1.5 m-2'>
 						<img
 							src='../../public/assets/notifications.svg'
 							alt=''
@@ -46,7 +46,7 @@ function Header() {
 							width={30}
 						/>
 					</button>
-					<button className='bg-white rounded-xl h-10 w-10 p-1 m-2'>
+					<button className='bg-white rounded-xl h-10 w-10 p-1.5 m-2'>
 						<img
 							src='../../public/assets/mailLogo.svg'
 							alt=''
@@ -54,7 +54,7 @@ function Header() {
 							width={30}
 						/>
 					</button>
-					<button className='bg-white rounded-xl h-10 w-10 p-1 m-2'>
+					<button className='bg-white rounded-xl h-10 w-10 p-1.5 m-2'>
 						<img
 							src='../../public/assets/settings.svg'
 							alt=''
@@ -69,7 +69,7 @@ function Header() {
 							<option value=''>XeroCodee</option>
 						</select>
 					</form>
-					<button className='bg-white rounded-xl h-10 w-10 p-1 m-2'>
+					<button className='bg-white rounded-xl h-10 w-10 p-1.5 m-2'>
 						<img
 							src='../../public/assets/profileLogo.svg'
 							alt=''
@@ -79,7 +79,7 @@ function Header() {
 					</button>
 				</div>
 			</div>
-		</div>	
+		</div>
 	);
 }
 export default Header;
